@@ -1,5 +1,5 @@
 {
-    let mode = 'read'; // or 'write'
+    let mode = 'write'; // or 'write'
     let allAlbums = Array.from(document.querySelectorAll(
         'paper-item.center.horizontal.layout.style-scope.google-photos-page.x-scope.paper-item-0'));
     let name = (x) => x.querySelector('.setting-label.style-scope.google-photos-page').innerText;
@@ -9,7 +9,7 @@
             .map(name);
     } else {
         allAlbums
-            .filter(name)
+            .filter((x) => window.selectedAlbums.indexOf(name(x)) >= 0)
             .forEach((x) => x.click());
     }
 }
